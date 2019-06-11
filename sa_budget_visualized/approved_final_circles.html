@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 
-<!-- Load d3.js-->
 <script src="http://d3js.org/d3.v4.js"></script>
 
-<!--Color palette -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Aldrich|Arima+Madurai|Arvo|Henny+Penny|Indie+Flower|Libre+Baskerville|Pirata+One|Poiret+One|Sancreek|Satisfy|Share+Tech+Mono|Smokum|Snowburst+One|Special+Elite" rel="stylesheet">
 
 
-<!-- Create a div where the graph will take place-->
 <div id="my_dataviz"></div>
 
 
@@ -39,14 +36,9 @@ var svg = d3.select('#my_dataviz')
 d3.csv("sa_budget_v5.csv", function(data) {
 
 
-    // filter a bit the data -> more than 1 million inhabitants
-    //data = data.filter(function(d){return d.value>10000000})
-
     //Color palette for groups
     var color = d3.scaleOrdinal()
         .domain(["Steer Clear", "Religious", "Improv", "Media", "Greek", "Health", "Acapella", "Recreation", "Academic/Professional", "Advocacy & Inclusion", "General Club", "Service", "Cultural", "Student Assembly (Main Item)", "Media Council", "Alma Mater Productions","Student Assembly"])
-        //.range(d3.schemeCategory20);
-       //.range([d3.rgb("#E377C2"), d3.rgb("#7F7F7F"), d3.rgb("#17BECF"), d3.rgb(" #9EDAE5"), d3.rgb('#FFF500')]);
        .range([d3.rgb("#e377c2"), d3.rgb("#7f7f7f"), d3.rgb("#17becf"), d3.rgb("#9edae5"), d3.rgb("#bcbd22"), d3.rgb("#dbdb8d"), d3.rgb("#aec7e8"), d3.rgb("#ff9896"), d3.rgb("#1f77b4"), d3.rgb("#ff7f0e"), d3.rgb("#98df8a"), d3.rgb("#c7c7c7"), d3.rgb("#2ca02c"), d3.rgb("#f7b6d2"), d3.rgb("#d62728"), d3.rgb("#ffbb78"), d3.rgb("#f7b6d2")]);
 
     //Size scale for approved amounts
@@ -57,10 +49,6 @@ d3.csv("sa_budget_v5.csv", function(data) {
     var x = d3.scaleOrdinal()
         .domain(["Steer Clear", "Religious", "Improv", "Media", "Greek", "Health", "Acapella", "Recreation", "Academic/Professional", "Advocacy & Inclusion", "General Club", "Service", "Cultural", "Student Assembly (Main Item)", "Media Council", "Alma Mater Productions","Student Assembly"])
         .range([0, 40, 80, 120, 160, 200, 240, 315, 390, 465, 540, 615, 700, 790, 920, 1100, 1300])
-
-    //var y = d3.scaleOrdinal()
-        //.domain(["academic/professional", "acapella", "advocacy", "amp", "club", "cultural", "greek", "health", "improv", "media", "recreation", "religious", "steer clear"])
-        //.range([50, 200, 340, 500])
 
     //create a tooltip
     var Tooltip = d3.select("#my_dataviz")
